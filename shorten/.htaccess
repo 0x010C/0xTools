@@ -1,0 +1,9 @@
+Options +FollowSymlinks
+RewriteEngine on
+
+RewriteRule ^t/?$						/text.php					[L]
+RewriteRule ^([a-zA-Z0-9]+)$			/index.php?r=$1				[L]
+
+ErrorDocument 404 /404.html
+ErrorDocument 403 /403.html
+

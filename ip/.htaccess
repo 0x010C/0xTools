@@ -1,0 +1,8 @@
+Options +FollowSymlinks
+RewriteEngine on
+
+RewriteRule ^t/?$						text.php						[L]
+
+ErrorDocument 404 /404.html
+ErrorDocument 403 /403.html
+

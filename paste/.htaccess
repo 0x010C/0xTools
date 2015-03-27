@@ -1,0 +1,10 @@
+Options +FollowSymlinks
+RewriteEngine on
+
+RewriteRule ^t/?$						/text.php						[L]
+RewriteRule ^t/([0-9a-zA-Z]+)/?$		/displaytext.php?p=$1			[L]
+RewriteRule ^([0-9a-zA-Z]+)/?$			/display.php?p=$1				[L]
+
+ErrorDocument 404 /404.html
+ErrorDocument 403 /403.html
+
