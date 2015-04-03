@@ -198,7 +198,7 @@
 												 'link' => $link,
 												 'alias' => $alias
 												  ));
-					echo '<h2 style="margin-top:20px;font-size: 30px; line-height: 20px; font-weight:normal;">Short URL : <a style="color: #444; font-weight: bold; text-decoration: none;" href="' . $protocol . '0c.lt/' . $alias . '">0c.lt/' . $alias . '</a></h2>';
+					echo '<h2 style="margin-top:20px;font-size: 30px; line-height: 20px; font-weight:normal;">Short URL : <a style="color: #444; font-weight: bold; text-decoration: none;" href="' . $protocol . '0c.lt/' . htmlspecialchars($alias) . '">0c.lt/' . htmlspecialchars($alias) . '</a></h2>';
 				}
 				
 				
