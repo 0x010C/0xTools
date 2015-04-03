@@ -25,6 +25,8 @@
 		$alias = $_GET['a'];
 	if(isset($_POST['a']))
 		$alias = $_POST['a'];
+	$alias = preg_replace("/^\/+/", "", $alias);
+	$alias = preg_replace("/\/+/", "/", $alias);
 
 	if($link != "")
 	{
