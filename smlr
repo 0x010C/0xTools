@@ -1,0 +1,51 @@
+#!/bin/bash
+
+help(){
+	echo "Usage: smlr [-f] URL [ALIAS]"
+}
+
+force=false
+alias=""
+
+while getopts ":f" option
+do
+	case $option in
+		f)
+			force=true
+			;;
+	esac
+done
+shift $((OPTIND-1))
+
+if [ $# -ge 1 ]; then
+	url=$1
+else
+	help
+	exit 1
+fi
+
+if [ $# -ge 2 ]; then
+	alias=$2
+fi
+
+response=$(curl -s --data-urlencode "l=${url}" --data-urlencode "a=${alias}" http://shorten.0x010c.fr/t) ;
+
+if [ $? -ne 0 ]; then
+	echo "Error: failed to connect to remote server"
+	exit 2
+elif [ "$response" = "Alias already used" ]; then
+	if [ "$force" = true ]; then
+		response=$(curl -s --data-urlencode "l=${url}" http://shorten.0x010c.fr/t) ;
+		if [ $? -ne 0 ]; then
+			echo "Error: failed to connect to remote server"
+			exit 2
+		fi
+	else
+		echo "$response"
+		exit 3
+	fi
+fi
+
+echo "> https://$response"
+
+exit 0
